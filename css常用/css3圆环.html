@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>css3环形进度条</title>
+    <style>
+        .circle {
+            width: 100px;
+            height: 100px;
+            background-color: #eee;
+            border-radius: 50%;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .left,
+        .right {
+            width: 50px;
+            height: 100px;
+            position: absolute;
+            background-color: black;
+            opacity: 0.5;
+            /* 设置透明度 */
+        }
+
+        .right {
+            right: 0;
+            /* 让右盒子位于右侧 */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 圆环进度条 -->
+    <!-- 实现方式：
+        采用边框(border)+裁剪(clip:rect()) 实现的
+    -->
+    <div class="circle">
+        <div class="percent left"></div>
+        <div class="percent right wth0"></div>
+    </div>
+    <script>
+        // $('.left').animate({
+        //     deg: per * 3.6
+        // }, {
+        //     step: function (n, fx) {
+        //         if (per > 180) {
+        //             $('.circle').addClass('clip-auto');
+        //             $('.right').removeClass('.wth0')
+        //         }
+        //         $(this).css({
+        //             "-webkit-transform": "rotate(" + n + "deg)",
+        //             "transform": "rotate(" + n + "deg)"
+        //         })
+        //     },
+        //     duration: 500
+        // })
+
+    </script>
+</body>
+
+</html>
