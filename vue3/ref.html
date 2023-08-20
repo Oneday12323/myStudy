@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+
+
+
+        注意：不要借助第三方工具，如编辑器；也不要复制粘贴答案。否则视为无效答题！
+1.解释下面这段代码的输出
+const a = '123';
+const b = 123;
+
+
+console.log(a === b); //false
+console.log(a == b); //true
+console.log(1 < 2 < 3); //true
+console.log(3 > 2 > 1); //false
+
+
+
+
+2.解释下面这段代码的输出
+for (var i = 0; i < 5; i++) {
+
+           setTimeout(function() {
+                console.log(i);
+            }, i * 1000);
+
+}
+//0 1 2 3 4 
+
+
+
+
+3.解释下面这段代码的输出
+var a = 10;
+var foo = {
+    a: 20,
+    b: function(){
+        var a = 30;
+        return this.a;
+},
+    c: () => {
+        var a = 40;
+        return this.a;
+    },
+}
+var d = {
+    a: 50,
+};
+
+console.log(a); //10
+console.log(foo.b());//30
+console.log(foo.c());//10
+console.log(foo.b.bind(d)());//50
+console.log(foo.c.bind(d)());//10
+
+
+
+
+4.解释下面这段代码的输出
+console.log('datagrand1');
+setTimeout(() => {
+       console.log('datagrand2');
+});
+const p1 = new Promise(resolve => {
+       console.log('datagrand3');
+       resolve();
+});
+p1.then(() => {
+        console.log('datagrand4');
+});
+console.log('datagrand5');
+const p2 = new Promise(resolve => {
+        console.log('datagrand6');
+        resolve();
+});
+p2.then(() => {
+       console.log('datagrand7');
+});
+//datagrand1
+//将setTimeout放入宏任务队列
+//datagrand3
+//datatgrand5
+//datatgrand6
+//datatgrnd4
+//datatgrand7
+//datatgrand2
+
+
+
+
+
+
+
+
+
+5.实现一个sum 函数，使其同时满足以下两个调用需求
+sum(2,3)    // 5
+sum(2)(3) // 5
+const sum = (a,b) => {
+    return new Promise((resolve,reject)=>{
+        let _sum = a+b;
+        resolve(_sum);
+        })
+    }
+sum.then((res)=>{
+    return sum(res,)
+    })
+
+
+
+
+
+
+
+6.实现一个twoSum 函数: 传入源数组和目标数字，返回源数组中两个相加起来等于目标
+数字的索引
+twoSum( [2,7,11,15], 9) // [0, 1] ，因为2 + 7 = 9
+
+const twoSum = (nums,tar) => {
+    let map = new Map();
+    for(let i = 0; i <nums.length;i++){
+        if(map.has(tar - nums[i])){
+            return [map.get(tar - nums[i]),i];
+        }else{
+            map.set(nums[i],i);
+    }
+    return [];
+}
+     -->
+</body>
+</html>

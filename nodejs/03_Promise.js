@@ -24,6 +24,7 @@ const promise = new Promise((resolve,reject)=>{
     //throw new Error('出错啦！')
     //reject('error')
 
+    //为什么要通过函数来向promise中添加数据呢？？
     //通过函数来向Promise中添加数据，好处就是可以用来添加异步调用的数据
     /* setTimeout(()=>{
         resolve('hh')
@@ -74,7 +75,7 @@ promise.then((result)=>{
             当我们通过then读取数据时，相当于为Promise设置了回调函数，
                 如果PromiseState变为fulfilled，则调用then的第一个回调函数来返回数据
                 如果PromiseState变为rejected，则调用then的第二个回调函数来返回数据
-                
+                 
 */
 const promise2 = new Promise((resolve,reject)=>{
     setTimeout(()=>{

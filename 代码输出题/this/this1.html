@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+var name = '123';
+   
+   var obj = {
+     name: '456',
+      
+      getName: function () {
+      
+         function printName() {
+      
+            console.log(this.name);
+            
+      
+         }
+      
+         (printName.bind(obj))();//这里调用printName()的是？----window  
+         
+         console.log("getName()"+this.name); //是obj
+       }
+      
+   }
+      
+   obj.getName();
+    </script>
+</body>
+</html>

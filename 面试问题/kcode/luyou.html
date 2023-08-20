@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Router</title>
+</head>
+<body>
+    <nav>
+        <a href="#/">Home</a>
+        <a href="#/about">About</a>
+        <a href="#/contact">Contact</a>
+    </nav>
+
+    <div id="app"></div>
+
+    <script>
+        // 定义路由配置
+        const routes = [
+            {
+                path:'/',component:Home
+            },{
+                path:'/about',component:About
+            },{
+                path:'/contact',component:Contact
+            }
+        ];
+
+        // 定义路由组件
+        function Home(){
+            return '<h1>Home</h1>';
+        }
+
+        function About(){
+            return '<h1>About</h1>'
+        }
+
+        function Contact(){
+            return '<h1>Contact</h1>'
+        }
+
+        // 路由切换函数
+        function router(){
+            const path = location.hash.slice(1); // 获取url中的路径部分
+            const route = routes.find(route => {
+                return route.path === path
+            });
+
+            if(route){
+                const component =  route.component(); // 调用路由组件函数获取组件内容
+                document.getElementById('app').innerHTML = component;
+            } else{
+                document.getElementById('app').innerHTML = '<h1>404 Not Found</h1>'; //处理未匹配到的路由
+            }
+        }
+
+        // 监听url的hash变化，并在变化时触发路由切换
+        window.addEventListener('hashchange',router);
+        // 初始加载时触发一次路由切换
+        window.addEventListener('load', router);
+    </script>
+</body>
+</html>

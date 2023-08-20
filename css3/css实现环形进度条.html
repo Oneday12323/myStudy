@@ -13,7 +13,7 @@
         height: 100px;
         background-color: #ccc;
         /* 水平居中 */
-        margin: 3 00px auto;
+        margin: 300px auto;
         /* 变为圆形 */
         border-radius: 50%;
         position: relative;
@@ -59,8 +59,8 @@
         border-bottom-left-radius: 100px;
         transform-origin: right center;
         transform: rotate(180deg);
-        animation: progress1 2s linear forwards;
-        animation-delay: 2s;
+        /* animation: progress1 2s linear forwards;
+        animation-delay: 2s; */
 
     }
 
@@ -70,7 +70,7 @@
         /* 旋转中心点 */
         transform-origin: left center;
         transform: rotate(-180deg);
-        animation: progress2 2s linear forwards;
+        /* animation: progress2 2s linear forwards; */
 
     }
 
@@ -127,7 +127,38 @@
     </div>
     <button class="log">click me</button>
     <script>
-        let innerDom = document.querySelector('.inner')
+        /* let innerDom = document.querySelector('.inner')
+        let leftCircle = document.querySelector('.left-circle');
+        let rightCircle = document.querySelector('.right-circle')
+        //当进行文件上传下载的时候，会有两个数据的大小 即总数据的大小，以及当前已经加载的文件的大小 
+        //通过他们来计算当前的一个百分比
+
+        let timer = null; //用于清除数据
+        let loader = 0; //当前所加载到的一个数据
+        let total = 1500; //总数据大小，根据实际情况来进行调整
+
+        //通过定时器函数来模拟ajax的异步操作
+        timer = setInterval(() => {
+            let num = Number((loader / total) * 100).toFixed(1); //计算当前的百分比
+            let deg = Number((loader / total) * 360).toFixed(0);
+            //console.log(deg)
+            if (num > 100) {
+                clearInterval(timer);
+            } else {
+                loader++;
+                innerDom.textContent = num + '%';
+                if (deg > 180) {
+                    leftCircle.style.transform = `rotate(${deg}deg)`
+                } else {
+                    rightCircle.style.transform = `rotate(-${180 - deg}deg)`
+                }
+            }
+        }, 10) */
+
+        const logDom = document.querySelector('.log')
+        logDom.addEventListener('click', () => {
+
+            let innerDom = document.querySelector('.inner')
         let leftCircle = document.querySelector('.left-circle');
         let rightCircle = document.querySelector('.right-circle')
         //当进行文件上传下载的时候，会有两个数据的大小 即总数据的大小，以及当前已经加载的文件的大小 
@@ -154,22 +185,7 @@
                 }
             }
         }, 10)
-
-        const logDom = document.querySelector('.log')
-        logDom.addEventListener('click', () => {
-
-
-
-            let timer2 = null;
-            let num = 0;
-            timer2 = setInterval(() => {
-                if (num >= 100) {
-                    clearInterval(timer2)
-                } else {
-                    num++;
-                    console.log(num);
-                }
-            }, 1000)
+            
         })
 
     </script>

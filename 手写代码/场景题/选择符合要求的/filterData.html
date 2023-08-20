@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从级联选择器中，找出当前项的元数据</title>
+</head>
+<body>
+    <div></div>
+    <script>
+
+const originData = [{
+         "field": "shandong",
+         "displayName": "山东",
+         "category": 2,
+         "children": [
+           {
+             "field": "weihai",
+             "displayName": "威海",
+             "category": 2,
+             "children":[
+                {
+                    "field": "dalian",
+             "displayName": "大连",
+             "category": 2,
+                }
+             ]
+           },
+           {
+             "field": "qingdao",
+             "displayName": "青岛",
+             "category": 2,
+           }
+         ],
+}];
+// 示例 key： [shandong, qingdao];
+// 要求找出传入key最后一层的元数据（层数不确定）
+const filterDataFromCascader = (data,res=[]) => {
+    data.forEach((item)=>{
+        res.push({field:item.field});
+        if(item.children&&item.children.length!=0){
+            filterDataFromCascader(item.children,res)
+        }
+    })
+    return res
+}
+
+function transfer(treeData){
+    if(!(!treeData.hasOwnProperty('field') || ! treeData)){
+        let arr =[];
+        let obj = {};
+        obj.field=treeData.field;
+        obj.children=treeData.children.map(value=>{
+            return value.field
+        })
+        arr.push(obj)
+
+        treeData.children.forEach(value=>{
+            arr=arr.concat(transfer(value))
+        })
+        return arr;
+    }else{
+        return []
+    }   
+}
+const res = filterDataFromCascader(originData,[])
+console.log(res);
+
+    </script>
+</body>
+</html>

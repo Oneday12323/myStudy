@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 使用一个固定高度的容器，设置overflow-y:样式为scroll，这样就会出现垂直滚动条 -->
+    <div id="list-container" style="height: 500px; overflow-y: scroll;">
+        <div id="list"></div>
+      </div>
+
+      
+      <script>
+    //     //创建数据源，每个元素都是一个字符串
+    //   const data = Array.from({ length: 100000 }, (_, i) => `Item ${i}`);
+    //   //计算每个列表项的高度
+    //   const ITEM_HEIGHT = 15;
+    //   const container = document.getElementById('list-container');
+    //   const list = document.getElementById('list');
+      
+    //   //计算可见列表项的数量
+    //   console.log("container.offsetHeight",container.offsetHeight);
+    //   const visibleCount = Math.ceil(container.offsetHeight / ITEM_HEIGHT);
+      
+
+    //   function updateList() {
+    //     console.log(container)
+    //     const { scrollTop } = container;
+    //     console.log(scrollTop);
+    //     const startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+    //     const endIndex = startIndex + visibleCount;
+      
+    //     list.style.transform = `translateY(${startIndex * ITEM_HEIGHT}px)`;
+    //     list.innerHTML = '';
+    //     for (let i = startIndex; i < endIndex; i++) {
+    //       const item = document.createElement('div');
+    //       item.innerText = data[i];
+    //       item.style.height = `${ITEM_HEIGHT}px`;
+    //       list.appendChild(item);
+    //     }
+    //   }
+      
+    //   function throttle(fn, delay) {
+    //     let timer = null;
+    //     return function(...args) {
+    //       if (timer) {
+    //         return;
+    //       }
+    //       timer = setTimeout(() => {
+    //         fn.apply(this, args);
+    //         timer = null;
+    //       }, delay);
+    //     };
+    //   }
+      
+    //   const throttledUpdateList = throttle(updateList, 10);
+    //   container.addEventListener('scroll', throttledUpdateList);
+    //   updateList();
+    const data = Array.from({ length: 100000 }, (_, i) => `Item ${i}`);
+
+const ITEM_HEIGHT = 10;
+const container = document.getElementById('list-container');
+const list = document.getElementById('list');
+const visibleCount = Math.ceil(container.offsetHeight / ITEM_HEIGHT);
+
+function updateList() {
+  const { scrollTop } = container;
+  const startIndex = Math.floor(scrollTop / ITEM_HEIGHT);
+  const endIndex = startIndex + visibleCount;
+
+  list.innerHTML = '';
+  for (let i = startIndex; i < endIndex; i++) {
+    const item = document.createElement('div');
+    item.innerText = data[i];
+    item.style.height = `${ITEM_HEIGHT}px`;
+    list.appendChild(item);
+  }
+}
+
+container.addEventListener('scroll', updateList);
+updateList();
+      </script>
+      
+</body>
+</html>
